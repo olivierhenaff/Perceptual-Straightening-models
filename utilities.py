@@ -58,17 +58,19 @@ def makeContrastfade(imgName):
 	if imgName in ['water-contrast0.5', 'walking-contrast0.5', 'bees-contrast0.5', 'boats_contrastCocktail', 'walking_contrastCocktail']:
 
 		midGrey = x[0][0][0]
-		x[-1].copy_( x[0] ).add_( - midGrey ).mul_( 0.5 ).add_( midGrey ) 
+		# x[-1].copy_( x[0] ).add_( - midGrey ).mul_( 0.5 ).add_( midGrey ) 
+		x[-1] = 0.5 * (x[0] - midGrey ) + midGrey
 		linearlyInterpolate( x ) 
 
 	elif imgName in ['prairieTer-contrastLog0.1', 'walking-contrastLog0.1', 'smile-contrastLog0.1', 'bees_contrastCocktail', 'egomotion_contrastCocktail']:
 
 		midGrey = x[0][0][0]
-		x.add_( - midGrey ) 
+		x = x - midGrey
 		for i in range( 1, x.size(0) ):
 			t = i / ( x.size(0) - 1 )
-			x[i].copy_( x[0] ).mul_( 0.1**t )
-		x.add_(   midGrey ) 
+			# x[i].copy_( x[0] ).mul_( 0.1**t )
+			x[i] = x[0] * 0.1**t
+		x = x + midGrey
 
 	else:
 		raise Exception('sorry, no data for this sequence!')

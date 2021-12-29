@@ -2,9 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F 
 
-import pytorch_fft.fft.autograd as fft
-import pytorch_fft.fft          as fftf
-
 import sys 
 import os
 
