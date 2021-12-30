@@ -27,5 +27,3 @@ The models presented here were developped for the following paper:
   publisher={Nature Publishing Group}
 }
 ```
-
-If you find them to be useful for your research, please consider citing it. 
